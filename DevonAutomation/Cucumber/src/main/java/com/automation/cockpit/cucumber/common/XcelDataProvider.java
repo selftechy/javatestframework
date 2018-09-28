@@ -44,7 +44,20 @@ public class XcelDataProvider {
 		}
 	}
 
-
+/**
+ * 
+ * Things to done:
+ * 1. Excel data provider - provide data in table format - for user - give sheet name or sheet number starting from 0 and 
+ * then he should get all the rows & columns data 
+ * 2. Data from database - get help from TAF
+ * 3. Integrate RestAssure - https://mvnrepository.com/artifact/io.rest-assured/rest-assured/3.0.0
+ *  http://rest-assured.io/
+ * 4. Separate cucumber & TestNG 
+ * http://testng.org/doc/maven.html
+ * https://mvnrepository.com/artifact/org.testng/testng
+ * 
+ * 
+ */
 
 
 }
