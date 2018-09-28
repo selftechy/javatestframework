@@ -1,0 +1,21 @@
+2018-09-26 12:26:06,927 [Worker-5: Loading available Gradle versions] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2018-09-26 12:27:01,578 [Worker-13: Importing Maven projects] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.devon.automation.agilecockpit:cucumber:0.0.1-SNAPSHOT @ C:\EclipseWorkspaces\PrwAutomationFramework\Cucumber\pom.xml.
+2018-09-26 12:27:02,361 [Worker-13: Importing Maven projects] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/UIDriver: com.devon.automation.cockpitautomation:UIDriver:0.0.1-SNAPSHOT with classifier  to /UIDriver/target/classes
+2018-09-26 12:27:02,440 [Worker-13: Importing Maven projects] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.devon.automation.cockpitautomation:UIDriver:0.0.1-SNAPSHOT @ C:\EclipseWorkspaces\PrwAutomationFramework\UIDriver\pom.xml.
+2018-09-26 12:27:03,424 [Worker-13: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /UIDriver/src/main/java
+2018-09-26 12:27:03,424 [Worker-13: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /UIDriver/src/main/resources
+2018-09-26 12:27:03,424 [Worker-13: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /UIDriver/src/test/java
+2018-09-26 12:27:03,643 [Worker-13: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /Cucumber/src/main/java
+2018-09-26 12:27:03,643 [Worker-13: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /Cucumber/src/main/resources
+2018-09-26 12:27:03,658 [Worker-13: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /Cucumber/src/test/java
+2018-09-26 12:27:03,658 [Worker-13: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /Cucumber/src/test/resources
+2018-09-26 12:27:03,908 [Worker-13: Importing Maven projects] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 2 project(s) in 4 sec
+2018-09-26 12:27:05,908 [Worker-13: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-09-26 12:27:05,908 [Worker-13: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-09-26 12:27:05,924 [Worker-13: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-09-26 12:27:05,924 [Worker-13: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\EclipseWorkspaces\PrwAutomationFramework\UIDriver\src\test\resources
+2018-09-26 12:27:07,049 [Worker-13: Building workspace] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/UIDriver: com.devon.automation.cockpitautomation:UIDriver:0.0.1-SNAPSHOT with classifier  to /UIDriver/target/classes
+2018-09-26 12:27:07,080 [Worker-13: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-09-26 12:27:07,080 [Worker-13: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 13 resources
+2018-09-26 12:27:07,127 [Worker-13: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-09-26 12:27:07,127 [Worker-13: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource

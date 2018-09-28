@@ -1,0 +1,104 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "comments": [
+          {
+            "line": 4,
+            "value": "########################################################################################################"
+          }
+        ],
+        "line": 6,
+        "name": "As a user I want to create and validate survey",
+        "description": "",
+        "id": "survey;as-a-user-i-want-to-create-and-validate-survey",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 8906976625,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "a user logs into the agile cockpit",
+            "match": {
+              "location": "SurveyStepDefinition.navigateToHomePage()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2363380,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "creates a survey",
+            "match": {
+              "location": "SurveyStepDefinition.createSurvey()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 36607,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "newly created survey should be present in the system",
+            "match": {
+              "location": "SurveyStepDefinition.validateHeadersInHomePage()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 11,
+        "name": "As a user I want to validate survey with multiple users",
+        "description": "",
+        "id": "survey;as-a-user-i-want-to-validate-survey-with-multiple-users",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 192615,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "creates a survey",
+            "match": {
+              "location": "SurveyStepDefinition.createSurvey()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 63635,
+              "status": "passed"
+            },
+            "line": 13,
+            "name": "newly created survey should be present in the system",
+            "match": {
+              "location": "SurveyStepDefinition.validateHeadersInHomePage()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "Survey",
+    "description": "",
+    "id": "survey",
+    "keyword": "Feature",
+    "uri": "Group1/Survey.feature",
+    "tags": [
+      {
+        "line": 1,
+        "name": "@Survey"
+      }
+    ]
+  }
+]
