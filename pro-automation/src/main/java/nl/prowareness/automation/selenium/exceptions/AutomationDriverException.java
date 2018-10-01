@@ -15,4 +15,5 @@ public class AutomationDriverException extends RuntimeException{
     public AutomationDriverException(final String message){
         super(message);
     }
+    
 }

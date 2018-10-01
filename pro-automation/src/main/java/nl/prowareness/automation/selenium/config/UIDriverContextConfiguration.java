@@ -10,7 +10,8 @@ import org.springframework.context.annotation.Configuration;
  */
 
 @Configuration
-@ComponentScan(basePackages={"nl.prowareness.automation.selenium.webdriver","nl.prowareness.automation.selenium.webanalytics"})
+@ComponentScan(basePackages={"nl.prowareness.automation.selenium.webdriver","nl.prowareness.automation.selenium.webanalytics"
+		,"nl.prowareness.automation.dao","nl.prowareness.automation.dao.model"})
 public interface UIDriverContextConfiguration {
 
 }
