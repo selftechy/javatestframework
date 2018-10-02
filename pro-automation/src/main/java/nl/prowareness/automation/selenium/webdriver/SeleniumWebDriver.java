@@ -253,7 +253,6 @@ public class SeleniumWebDriver {
 		String operatingSystemPlatform="";
 		try{
 			browserName = properties.getProperty("selenium.browser").toUpperCase();
-			System.out.println("Given browsername: "+browserName);
 		}catch(NullPointerException e){
 			throw new AutomationDriverException("Missing properties, ensure that the following properties are added to property file:selenium.remoteUrl, selenium.browser, selenium.browserVersion, selenium.operatingSystem", e);
 		}
@@ -350,7 +349,6 @@ public class SeleniumWebDriver {
 		if(this.seleniumProxy.get()!=null){
 			capabilities.setCapability(CapabilityType.PROXY, seleniumProxy.get());
 		}
-		System.out.println("Inside setting chrome driver.........................");
 		System.setProperty(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY,"./"+driverExeDirectory+"/chromedriver.exe");
 		nativeWebDriver.set(new ChromeDriver());
 	}
@@ -416,7 +414,6 @@ public class SeleniumWebDriver {
 		try{
 			nativeWebDriver.get().navigate().to(url);
 		}catch(Exception e){
-			System.out.println(e);
 			LOGGER.error("Unable to navigate to url "+url,e);
 			throw new AutomationDriverException("Unable to navigate to url "+url, e);
 		}

@@ -9,7 +9,9 @@ import com.automation.cockpit.webdriver.pageclass.AgileCockpitLoginPage;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import nl.prowareness.automation.dao.XcelDataProvider;
 import nl.prowareness.automation.selenium.assertions.AssertWithScreenShot;
+import nl.prowareness.automation.selenium.exceptions.AutomationDataException;
 import nl.prowareness.automation.selenium.webdriver.SeleniumWebDriver;
 
 @ContextConfiguration(classes = { CucumberContextConfig.class })
@@ -17,6 +19,9 @@ public class SurveyStepDefinition {
 
 	@Autowired
 	SeleniumWebDriver webDriver;
+
+	@Autowired
+	XcelDataProvider xlDataProvider;
 	
 	@Autowired
 	AgileCockpitLoginPage agileCockpitLoginPage;
@@ -28,7 +33,8 @@ public class SurveyStepDefinition {
 	
 	
 	@When("^creates a survey$")
-	public void createSurvey(){
+	public void createSurvey() throws AutomationDataException{
+		System.out.println("No of sheets: "+xlDataProvider.getData().getNoOfSheets());
 		AssertWithScreenShot.assertTrue(true, webDriver);
 	}
 	

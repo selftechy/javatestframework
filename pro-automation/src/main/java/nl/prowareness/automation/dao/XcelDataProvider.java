@@ -38,6 +38,9 @@ public class XcelDataProvider {
 	private static final String XCEL_DATA_FILE_PATH="xceldata.path";
 
 	private static final Logger LOGGER = Logger.getLogger(XcelDataProvider.class);
+	
+	@Autowired
+	private ExcelData  xlData;
 
 	@Autowired
 	public XcelDataProvider(Environment prop) throws AutomationDataException{
@@ -53,7 +56,7 @@ public class XcelDataProvider {
 	
 	
 	public ExcelData getData() throws AutomationDataException {
-		ExcelData  xlData =  new ExcelData(filePath);
+		xlData =  new ExcelData(filePath);
 		List<ExcelSheet>sheetData = new ArrayList<ExcelSheet>();
 		Map<String,ExcelSheet>sheetDataByName = new HashMap<String,ExcelSheet>();
 		ExcelSheet xlSheet = null;
@@ -119,7 +122,7 @@ public class XcelDataProvider {
  * 
  * Things to done:
  * 1. Excel data provider - provide data in table format - for user - give sheet name or sheet number starting from 0 and 
- * then he should get all the rows & columns data 
+ * then he should get all the rows & columns data - done 
  * 2. Data from database - get help from TAF
  * 3. Integrate RestAssure - https://mvnrepository.com/artifact/io.rest-assured/rest-assured/3.0.0
  *  http://rest-assured.io/

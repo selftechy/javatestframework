@@ -3,7 +3,9 @@ package nl.prowareness.automation.dao.model;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class ExcelData {
 	
 	private String fileName;
