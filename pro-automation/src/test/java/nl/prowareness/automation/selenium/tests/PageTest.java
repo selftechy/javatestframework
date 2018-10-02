@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import nl.prowareness.automation.dao.XcelDataProvider;
-import nl.prowareness.automation.dao.model.ExcelData;
 import nl.prowareness.automation.selenium.exceptions.AutomationDataException;
 import nl.prowareness.automation.selenium.exceptions.AutomationDriverException;
 import nl.prowareness.automation.selenium.exceptions.AutomationElementNotFoundException;
@@ -28,9 +26,6 @@ public class PageTest {
 	@Autowired
 	TestPageClass tp;
 
-	@Autowired
-	XcelDataProvider xlDataProvider;
-	
 	
 	@Before
 	public void initialize(){
@@ -42,7 +37,6 @@ public class PageTest {
 	
 	@Test
 	public void test() throws AutomationElementNotFoundException, AutomationDriverException, IOException, AutomationDataException{
-		ExcelData xlData = xlDataProvider.getData();
 		driver.connect("http://google.com");
 		tp.test();
 		

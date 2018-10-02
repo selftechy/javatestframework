@@ -33,7 +33,8 @@ public class XcelDataProvider {
 
 	FileInputStream file = null;
 	String xlSheetTobeRead = null;
-
+	String filePath = null;
+	
 	private static final String XCEL_DATA_FILE_PATH="xceldata.path";
 
 	private static final Logger LOGGER = Logger.getLogger(XcelDataProvider.class);
@@ -42,7 +43,8 @@ public class XcelDataProvider {
 	public XcelDataProvider(Environment prop) throws AutomationDataException{
 
 		try {
-			this.file = new FileInputStream(new File(prop.getProperty(XCEL_DATA_FILE_PATH)));
+			filePath = prop.getProperty(XCEL_DATA_FILE_PATH);
+			this.file = new FileInputStream(new File(filePath));
 		} catch (FileNotFoundException e) {
 			LOGGER.error("FileNotFoundException: "+e);
 			throw new AutomationDataException("Please check the data file path: "+e.getMessage());
@@ -51,7 +53,7 @@ public class XcelDataProvider {
 	
 	
 	public ExcelData getData() throws AutomationDataException {
-		ExcelData xlData =  new ExcelData(XCEL_DATA_FILE_PATH);
+		ExcelData  xlData =  new ExcelData(filePath);
 		List<ExcelSheet>sheetData = new ArrayList<ExcelSheet>();
 		Map<String,ExcelSheet>sheetDataByName = new HashMap<String,ExcelSheet>();
 		ExcelSheet xlSheet = null;
@@ -102,15 +104,13 @@ public class XcelDataProvider {
 	            
 	        }
 	        
-	        
+	        xlData.setSheetData(sheetData);
+	        xlData.setSheetDataByName(sheetDataByName);
 			
 		} catch (EncryptedDocumentException | InvalidFormatException | IOException e) {
 			LOGGER.error("Could not read excel data file: "+e);
 			throw new AutomationDataException("Check file format: "+e.getMessage());
 		}
-		
-
-		
 		
 		return xlData;
 	}

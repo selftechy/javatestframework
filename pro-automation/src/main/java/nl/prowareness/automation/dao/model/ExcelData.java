@@ -1,6 +1,5 @@
 package nl.prowareness.automation.dao.model;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

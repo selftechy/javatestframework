@@ -8,7 +8,11 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @PropertySource({"test_environment.properties"})
-@ComponentScan(basePackages={"nl.prowareness.automation.selenium.testsetup","nl.prowareness.automation.selenium.webdriver", "nl.prowareness.automation.selenium.pageinitializers"})
+@ComponentScan(basePackages={"nl.prowareness.automation.selenium.testsetup",
+		"nl.prowareness.automation.selenium.webdriver", 
+		"nl.prowareness.automation.selenium.pageinitializers",
+		"nl.prowareness.automation.dao",
+		"nl.prowareness.automation.dao.model"})
 
 public class TestConfig {
 
