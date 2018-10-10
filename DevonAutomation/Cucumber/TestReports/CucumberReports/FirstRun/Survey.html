@@ -52,7 +52,7 @@ $(document).ready(function() {
         <tbody>
           <tr class="info">
             <td>WebShop Automation</td>
-                        <td>02 Oct 2018, 23:25</td>
+                        <td>04 Oct 2018, 12:40</td>
           </tr>
         </tbody>
       </table>
@@ -93,18 +93,18 @@ $(document).ready(function() {
 </thead>
     <tr>
       <td class="tagname"><a href="Survey.html">@Survey</a></td>
-      <td>2</td>
       <td>1</td>
       <td>1</td>
-      <td>5</td>
-      <td>2</td>
-      <td   class="failed"    >1</td>
-      <td    class="skipped"   >2</td>
+      <td>0</td>
+      <td>3</td>
+      <td>3</td>
       <td >0</td>
       <td >0</td>
       <td >0</td>
-      <td class="duration-format">23s 694ms</td>
-      <td class="failed">Failed</td>
+      <td >0</td>
+      <td >0</td>
+      <td class="duration-format">07s 630ms</td>
+      <td class="passed">Passed</td>
     </tr>
   </table>
 </div>
@@ -113,26 +113,12 @@ $(document).ready(function() {
       <a href="Group1-Survey-feature.html">View Feature File</a>
     <div class="feature-tags"></div>
     
-    <div class="failed"><span class="element-keyword">Scenario: </span><span class="element-name">As a user I want to create and validate survey</span></div>
-          <div class="failed"><span class="step-keyword">Given  </span><span class="step-name">a user logs into the agile cockpit</span><span class="step-duration">07s 266ms</span><div class="output_message"><input class="output_collapse" id="output_2012660424" type="checkbox"><label for="output_2012660424">org.openqa.selenium.WebDriverException: unknown error: Element <input id="login-button" class="account-button" type="submit" value="Login"> is not clickable at point (799, 484). Other element would receive the click: <iframe scrolling="no" frameborder="0" style="z-index: 2147483647; border: 0px; position: absolute; height: 70px; width: 185px; left: 649px; top: 444px;"></iframe></label><div>  (Session info: chrome=69.0.3497.100)<br/>  (Driver info: chromedriver=2.42.591088 (7b2b2dca23cca0862f674758c9a3933e685c27d5),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)<br/>Command duration or timeout: 0 milliseconds<br/>Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'<br/>System info: host: 'WIN7PC', ip: '192.168.0.104', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_31'<br/>Driver info: org.openqa.selenium.chrome.ChromeDriver<br/>Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\akshay\AppData\Loc...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:51815}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 69.0.3497.100, webStorageEnabled: true}<br/>Session ID: 2b5b25aa8e6da3ad0b00dd04eb2478bf<br/>	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)<br/>	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)<br/>	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)<br/>	at java.lang.reflect.Constructor.newInstance(Unknown Source)<br/>	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)<br/>	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)<br/>	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)<br/>	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)<br/>	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)<br/>	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)<br/>	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)<br/>	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)<br/>	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:276)<br/>	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)<br/>	at nl.prowareness.automation.selenium.webdriver.SeleniumWebDriver.click(SeleniumWebDriver.java:560)<br/>	at nl.prowareness.automation.selenium.fields.Button.click(Button.java:18)<br/>	at com.automation.cockpit.webdriver.pageclass.AgileCockpitLoginPage.Login(AgileCockpitLoginPage.java:59)<br/>	at com.automation.cockpit.cucumber.glue.SurveyStepDefinition.navigateToHomePage(SurveyStepDefinition.java:31)<br/>	at ✽.Given a user logs into the agile cockpit(Group1/Survey.feature:7)<br/></div></div></div>
+    <div class="passed"><span class="element-keyword">Scenario: </span><span class="element-name">As a user I want to create and validate survey</span></div>
+          <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">a user logs into the agile cockpit</span><span class="step-duration">072ms</span></div>
       
             <div></div>
       <div></div>
-          <div class="skipped"><span class="step-keyword">When  </span><span class="step-name">creates a survey</span><span class="step-duration">000ms</span></div>
-      
-            <div></div>
-      <div></div>
-          <div class="skipped"><span class="step-keyword">Then  </span><span class="step-name">newly created survey should be present in the system</span><span class="step-duration">000ms</span></div>
-      
-            <div></div>
-      <div></div>
-        
-    <br>
-      <a href="Group1-Survey-feature.html">View Feature File</a>
-    <div class="feature-tags"></div>
-    
-    <div class="passed"><span class="element-keyword">Scenario: </span><span class="element-name">As a user I want to validate survey with multiple users</span></div>
-          <div class="passed"><span class="step-keyword">Given  </span><span class="step-name">creates a survey</span><span class="step-duration">16s 428ms</span></div>
+          <div class="passed"><span class="step-keyword">When  </span><span class="step-name">creates a survey</span><span class="step-duration">07s 557ms</span></div>
       
             <div></div>
       <div></div>

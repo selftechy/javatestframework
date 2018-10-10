@@ -54,6 +54,7 @@ import org.springframework.util.StringUtils;
 import nl.prowareness.automation.selenium.exceptions.AutomationDriverException;
 import nl.prowareness.automation.selenium.exceptions.AutomationElementNotFoundException;
 import nl.prowareness.automation.selenium.exceptions.AutomationElementTimeOutException;
+import nl.prowareness.automation.selenium.fields.BaseElement;
 import nl.prowareness.automation.selenium.objectparser.ObjectRepositoryManager;
 import nl.prowareness.automation.selenium.utilities.FindBy;
 
@@ -924,41 +925,6 @@ public class SeleniumWebDriver {
 	}
 
 
-	public boolean waitUntilJQueryLoad(){
-		WebDriverWait wait = new WebDriverWait(nativeWebDriver.get(), Long.parseLong(properties.getProperty(WAIT_ON_ELEMENT_VISIBILITY)));
-
-		ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<Boolean>() {
-			@Override
-			public Boolean apply(WebDriver driver) {
-				try {
-					return (Boolean) ((JavascriptExecutor)driver).executeScript("return jQuery.active == 0");
-				}
-				catch (WebDriverException e) {
-					LOGGER.error("WebDriverException:",e);
-					return true;
-				}
-			}
-		};
-
-		return wait.until(jQueryLoad);
-	}
-
-
-	public boolean waitUntilJavaScriptLoad(){
-
-		WebDriverWait wait = new WebDriverWait(nativeWebDriver.get(), Long.parseLong(properties.getProperty(WAIT_ON_ELEMENT_VISIBILITY)));
-
-		ExpectedCondition<Boolean> jsLoad = new ExpectedCondition<Boolean>() {
-			@Override
-			public Boolean apply(WebDriver driver) {
-				return "complete".equals(((JavascriptExecutor)driver).executeScript("return document.readyState"));
-			}
-		};
-
-		return wait.until(jsLoad);
-
-	}
-
 	public Object executeScript(final String scriptToExecute, final Object... args) {
 		JavascriptExecutor js = (JavascriptExecutor) nativeWebDriver.get();
 		if (args == null) {
@@ -1003,68 +969,6 @@ public class SeleniumWebDriver {
 		}
 	}
 
-
-
-
-
-	public void waitForVisibilityOfElementLocatedBy(final FindBy by, final String locator) throws AutomationElementTimeOutException {
-		waitForVisibilityOfElementLocatedBy(by, locator, Integer.parseInt(properties.getProperty(WAIT_ON_ELEMENT_VISIBILITY)));
-
-	}
-
-	public void waitForInVisibilityOfElementLocatedBy(final FindBy by, final String locator)throws AutomationElementTimeOutException {
-		waitForInVisibilityOfElementLocatedBy(by, locator, Integer.parseInt(properties.getProperty(WAIT_ON_ELEMENT_VISIBILITY)));
-
-	}
-
-	public void waitForPresenceOfElementLocatedBy(final FindBy by, final String locator) throws AutomationElementTimeOutException {
-		waitForPresenceOfElementLocatedBy(by, locator, Integer.parseInt(properties.getProperty(WAIT_ON_ELEMENT_VISIBILITY)));
-	}
-
-	public void waitForElementToBeClickableLocatedBy(final FindBy by, final String locator) throws AutomationElementTimeOutException{
-		waitForElementToBeClickableLocatedBy(by, locator, Integer.parseInt(properties.getProperty(WAIT_ON_ELEMENT_VISIBILITY)));
-	}
-
-
-
-
-	public void waitForVisibilityOfElementLocatedBy(final FindBy by, final String locator, final int waitSeconds) throws AutomationElementTimeOutException {
-		WebDriverWait waitForElement = new WebDriverWait(nativeWebDriver.get(), waitSeconds);
-		try{
-			waitForElement.until(ExpectedConditions.visibilityOfElementLocated(getByLocator(by, locator)));
-		}catch (TimeoutException e){
-			handleTimeOutException(by, locator, e);
-		}
-
-	}
-
-	public void waitForInVisibilityOfElementLocatedBy(final FindBy by, final String locator, final int waitSeconds) throws AutomationElementTimeOutException {
-		WebDriverWait waitForElement = new WebDriverWait(nativeWebDriver.get(), waitSeconds);
-		try{
-			waitForElement.until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(by, locator)));
-		}catch (TimeoutException e){
-			handleTimeOutException(by, locator, e);
-		}
-
-	}
-
-	public void waitForPresenceOfElementLocatedBy(final FindBy by, final String locator, final int waitSeconds) throws AutomationElementTimeOutException {
-		WebDriverWait waitForElement = new WebDriverWait(nativeWebDriver.get(), waitSeconds);
-		try{
-			waitForElement.until(ExpectedConditions.presenceOfElementLocated(getByLocator(by, locator)));
-		}catch (TimeoutException e){
-			handleTimeOutException(by, locator, e);
-		}
-	}
-
-	public void waitForElementToBeClickableLocatedBy(final FindBy by, final String locator, final int waitSeconds) throws AutomationElementTimeOutException {
-		WebDriverWait waitForElement = new WebDriverWait(nativeWebDriver.get(), waitSeconds);
-		try{
-			waitForElement.until(ExpectedConditions.elementToBeClickable(getByLocator(by, locator)));
-		}catch (TimeoutException e){
-			handleTimeOutException(by, locator, e);
-		}
-	}
 
 
 	public void mouseHover(final FindBy by, final String locator) throws AutomationElementNotFoundException{
@@ -1119,41 +1023,184 @@ public class SeleniumWebDriver {
 			return true;
 		}
 	}
+	
+	public void waitUntilElementIsVisible(BaseElement element, long timeOutInSeconds) throws AutomationElementTimeOutException {
+		WebDriverWait waitForElement = new WebDriverWait(nativeWebDriver.get(), timeOutInSeconds);
+		try{
+			waitForElement.until(ExpectedConditions.visibilityOfElementLocated(getByLocator(element.getFindBy(), element.getFindByValue())));
+		}catch (TimeoutException e){
+			handleTimeOutException(element.getFindBy(), element.getFindByValue(), e);
+		}
+
+	}
+
+	public void waitUntilElementIsInVisibile(BaseElement element, long timeOutInSeconds) throws AutomationElementTimeOutException {
+		WebDriverWait waitForElement = new WebDriverWait(nativeWebDriver.get(), timeOutInSeconds);
+		try{
+			waitForElement.until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(element.getFindBy(), element.getFindByValue())));
+		}catch (TimeoutException e){
+			handleTimeOutException(element.getFindBy(), element.getFindByValue(), e);
+		}
+
+	}
+
+	public void waitUntilPresenceOfElement(BaseElement element, long timeOutInSeconds) throws AutomationElementTimeOutException {
+		WebDriverWait waitForElement = new WebDriverWait(nativeWebDriver.get(), timeOutInSeconds);
+		try{
+			waitForElement.until(ExpectedConditions.presenceOfElementLocated(getByLocator(element.getFindBy(), element.getFindByValue())));
+		}catch (TimeoutException e){
+			handleTimeOutException(element.getFindBy(), element.getFindByValue(), e);
+		}
+	}
+
+	public void waitUntilElementToBeClickable(BaseElement element, long timeOutInSeconds) throws AutomationElementTimeOutException {
+		WebDriverWait waitForElement = new WebDriverWait(nativeWebDriver.get(), timeOutInSeconds);
+		try{
+			waitForElement.until(ExpectedConditions.elementToBeClickable(getByLocator(element.getFindBy(), element.getFindByValue())));
+		}catch (TimeoutException e){
+			handleTimeOutException(element.getFindBy(), element.getFindByValue(), e);
+		}
+	}	
+	
+    public void waitUntilElementToBeSelected(BaseElement element, long timeOutInSeconds) {
+		WebDriverWait waitForElement = new WebDriverWait(getNativeWebDriver(), timeOutInSeconds);
+		try{
+			waitForElement.until(ExpectedConditions.elementToBeSelected(getByLocator(element.getFindBy(), element.getFindByValue())));
+		}catch (TimeoutException e){
+			handleTimeOutException(element.getFindBy(), element.getFindByValue(), e);		}
+    }
+    
+    
+    //Wait Until JQuery Angular and JS is ready
+    public void waitUntilJQueryAndAngularLoad(long timeOutInSeconds) {
+        waitUntilJQueryReady(timeOutInSeconds);
+        waitUntilAngularReady(timeOutInSeconds);
+    }
+    
+    
+    //Wait for JQuery Load
+    private void waitForJQueryLoad(long timeOutInSeconds) {
+    	JavascriptExecutor jsExec = (JavascriptExecutor) getNativeWebDriver();
+    	 WebDriverWait jsWait = new WebDriverWait(getNativeWebDriver(), timeOutInSeconds);
+    	
+        //Wait for jQuery to load
+        ExpectedCondition<Boolean> jQueryLoad = driver -> ((Long) ((JavascriptExecutor) getNativeWebDriver())
+                .executeScript("return jQuery.active") == 0);
+ 
+        //Get JQuery is Ready
+        boolean jqueryReady = (Boolean) jsExec.executeScript("return jQuery.active==0");
+ 
+        //Wait JQuery until it is Ready!
+        if(!jqueryReady) {
+        	LOGGER.info("JQuery is NOT Ready!");
+            jsWait.until(jQueryLoad);
+        } else {
+        	LOGGER.info("JQuery is Ready!");
+        }
+    }
+ 
+ 
+    //Wait for Angular Load
+    private void waitForAngularLoad(long timeOutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(getNativeWebDriver(),timeOutInSeconds);
+        JavascriptExecutor jsExec = (JavascriptExecutor) getNativeWebDriver();
+ 
+        String angularReadyScript = "return angular.element(document).injector().get('$http').pendingRequests.length === 0";
+ 
+        //Wait for ANGULAR to load
+        ExpectedCondition<Boolean> angularLoad = driver -> Boolean.valueOf(((JavascriptExecutor) driver)
+                .executeScript(angularReadyScript).toString());
+ 
+        //Get Angular is Ready
+        boolean angularReady = Boolean.valueOf(jsExec.executeScript(angularReadyScript).toString());
+ 
+        //Wait ANGULAR until it is Ready!
+        if(!angularReady) {
+        	LOGGER.info("ANGULAR is NOT Ready!");
+            //Wait for Angular to load
+            wait.until(angularLoad);
+        } else {
+        	LOGGER.info("ANGULAR is Ready!");
+        }
+    }
+ 
+    //Wait Until JS Ready
+    private void waitUntilJSReady(long timeOutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(getNativeWebDriver(),timeOutInSeconds);
+        JavascriptExecutor jsExec = (JavascriptExecutor) getNativeWebDriver();
+ 
+        //Wait for Javascript to load
+        ExpectedCondition<Boolean> jsLoad = driver -> ((JavascriptExecutor) getNativeWebDriver())
+                .executeScript("return document.readyState").toString().equals("complete");
+ 
+        //Get JS is Ready
+        boolean jsReady =  (Boolean) jsExec.executeScript("return document.readyState").toString().equals("complete");
+ 
+        //Wait Javascript until it is Ready!
+        if(!jsReady) {
+        	LOGGER.info("JS in NOT Ready!");
+            //Wait for Javascript to load
+            wait.until(jsLoad);
+        } else {
+        	LOGGER.info("JS is Ready!");
+        }
+    }
+ 
+    //Wait Until JQuery and JS Ready
+    private void waitUntilJQueryReady(long timeOutInSeconds) {
+        JavascriptExecutor jsExec = (JavascriptExecutor) this.getNativeWebDriver();
+ 
+        //First check that JQuery is defined on the page. If it is, then wait AJAX
+        Boolean jQueryDefined = (Boolean) jsExec.executeScript("return typeof jQuery != 'undefined'");
+        if (jQueryDefined == true) {
+            //Pre Wait for stability (Optional)
+            sleep(20);
+ 
+            //Wait JQuery Load
+            waitForJQueryLoad(timeOutInSeconds);
+ 
+            //Wait JS Load
+            waitUntilJSReady(timeOutInSeconds);
+ 
+        }  else {
+        	LOGGER.info("jQuery is not defined on this site!");
+        }
+    }
+ 
+    //Wait Until Angular and JS Ready
+    private void waitUntilAngularReady(long timeOutInSeconds) {
+        JavascriptExecutor jsExec = (JavascriptExecutor) this.getNativeWebDriver();
+ 
+        //First check that ANGULAR is defined on the page. If it is, then wait ANGULAR
+        Boolean angularUnDefined = (Boolean) jsExec.executeScript("return window.angular === undefined");
+        if (!angularUnDefined) {
+            Boolean angularInjectorUnDefined = (Boolean) jsExec.executeScript("return angular.element(document).injector() === undefined");
+            if(!angularInjectorUnDefined) {
+                //Pre Wait for stability (Optional)
+                sleep(20);
+ 
+                //Wait Angular Load
+                waitForAngularLoad(timeOutInSeconds);
+ 
+                //Wait JS Load
+                waitUntilJSReady(timeOutInSeconds);
+ 
+            } else {
+            	LOGGER.info("Angular injector is not defined on this site!");
+            }
+        }  else {
+        	LOGGER.info("Angular is not defined on this site!");
+        }
+    }
+ 
+    private void sleep (Integer seconds) {
+        long secondsLong = (long) seconds;
+        try {
+            Thread.sleep(secondsLong);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }    
+
 		
-	/*private HtmlTable extractTable(final WebElement tableElement, final boolean parseTableHeader, final int importantHeaderRow, final int parseRowCount) {
-        HtmlTable table = null;
-        List<WebElement> headerRows = tableElement.findElements(By.xpath("thead/tr"));//By.tagName(HTMLConstants.TR));
-        List<WebElement> rows = tableElement.findElements(By.xpath("tbody/tr"));//By.tagName(HTMLConstants.TR));
-        table = new HtmlTable(headerRows.size() + rows.size(), 0);
-        if (parseTableHeader) {
-            table = new HtmlTable(headerRows.size() - importantHeaderRow, 0);
-        }
-        int rowCount = importantHeaderRow;
-        if (parseTableHeader) {
-            for (int i = 0; i < headerRows.size(); i++) {
-                WebElement e = headerRows.get(i);
-
-                if (i == (rowCount - 1)) {
-                    List<WebElement> tableHeaders = e.findElements(By.xpath("*"));//By.tagName(HTMLConstants.TH));
-                    if (!tableHeaders.isEmpty()) {
-                        for (int j = 0; j < tableHeaders.size(); j++) {
-                            table.setColumnHeader(j + 1, tableHeaders.get(j).getText());
-                        }
-                    }
-                }
-            }
-        }
-
-        int loopUntil = (parseRowCount == -1 ? rows.size() : parseRowCount);
-        for (int i = 0; i < loopUntil; i++) {
-            WebElement e = rows.get(i);
-            List<WebElement> eRows = e.findElements(By.xpath("td"));//By.tagName(HTMLConstants.TD));
-            for (int j = 0; j < eRows.size(); j++) {
-                WebElement td = eRows.get(j);
-                String tableText = td.getText();
-                table.put(i + 1, j + 1, tableText == null ? "" : tableText);
-            }
-        }
-        return table;
-    }*/
 }

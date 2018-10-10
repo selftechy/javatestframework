@@ -1,7 +1,6 @@
 package nl.prowareness.automation.selenium.fields;
 
 import nl.prowareness.automation.selenium.exceptions.AutomationElementNotFoundException;
-import nl.prowareness.automation.selenium.exceptions.AutomationElementTimeOutException;
 import nl.prowareness.automation.selenium.utilities.FindBy;
 import nl.prowareness.automation.selenium.webdriver.SeleniumWebDriver;
 
@@ -81,40 +80,6 @@ public abstract class BaseElement {
     public String getCSSValue(String propertyName) throws AutomationElementNotFoundException{
     	return webDriver.getCSSValue(findBy, findByValue.get(), propertyName);
     }
-
-    public void waitForVisibilityOfElement() throws AutomationElementTimeOutException{
-        webDriver.waitForVisibilityOfElementLocatedBy(findBy, findByValue.get());
-    }
-
-    public void waitForInVisibilityOfElement() throws AutomationElementTimeOutException{
-        webDriver.waitForInVisibilityOfElementLocatedBy(findBy, findByValue.get());
-    }
-
-    public void waitForPresenceOfElement() throws AutomationElementTimeOutException{
-        webDriver.waitForPresenceOfElementLocatedBy(findBy, findByValue.get());
-    }
-    
-    public void waitForElementToBeClickable() throws AutomationElementTimeOutException{
-        webDriver.waitForElementToBeClickableLocatedBy(findBy, findByValue.get());
-    }
-
-    
-    public void waitForVisibilityOfElement(int waitSeconds) throws AutomationElementTimeOutException{
-        webDriver.waitForVisibilityOfElementLocatedBy(findBy, findByValue.get(), waitSeconds);
-    }
-
-    public void waitForInVisibilityOfElement(int waitSeconds) throws AutomationElementTimeOutException{
-        webDriver.waitForInVisibilityOfElementLocatedBy(findBy, findByValue.get(), waitSeconds);
-    }
-
-    public void waitForPresenceOfElement(int waitSeconds) throws AutomationElementTimeOutException{
-        webDriver.waitForPresenceOfElementLocatedBy(findBy, findByValue.get(), waitSeconds);
-    }
-
-    public void waitForElementToBeClickable(int waitSeconds) throws AutomationElementTimeOutException{
-        webDriver.waitForElementToBeClickableLocatedBy(findBy, findByValue.get(), waitSeconds);
-    }
-
 
     public void clickByJavaScript() throws AutomationElementNotFoundException{
         webDriver.clickByJavaScript(findBy, findByValue.get());

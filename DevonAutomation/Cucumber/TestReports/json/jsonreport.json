@@ -18,9 +18,8 @@
         "steps": [
           {
             "result": {
-              "duration": 7266322349,
-              "error_message": "org.openqa.selenium.WebDriverException: unknown error: Element \u003cinput id\u003d\"login-button\" class\u003d\"account-button\" type\u003d\"submit\" value\u003d\"Login\"\u003e is not clickable at point (799, 484). Other element would receive the click: \u003ciframe scrolling\u003d\"no\" frameborder\u003d\"0\" style\u003d\"z-index: 2147483647; border: 0px; position: absolute; height: 70px; width: 185px; left: 649px; top: 444px;\"\u003e\u003c/iframe\u003e\n  (Session info: chrome\u003d69.0.3497.100)\n  (Driver info: chromedriver\u003d2.42.591088 (7b2b2dca23cca0862f674758c9a3933e685c27d5),platform\u003dWindows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)\nCommand duration or timeout: 0 milliseconds\nBuild info: version: \u00273.14.0\u0027, revision: \u0027aacccce0\u0027, time: \u00272018-08-02T20:19:58.91Z\u0027\nSystem info: host: \u0027WIN7PC\u0027, ip: \u0027192.168.0.104\u0027, os.name: \u0027Windows 7\u0027, os.arch: \u0027amd64\u0027, os.version: \u00276.1\u0027, java.version: \u00271.8.0_31\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\\Users\\akshay\\AppData\\Loc...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:51815}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 69.0.3497.100, webStorageEnabled: true}\nSession ID: 2b5b25aa8e6da3ad0b00dd04eb2478bf\r\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\r\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)\r\n\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)\r\n\tat java.lang.reflect.Constructor.newInstance(Unknown Source)\r\n\tat org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)\r\n\tat org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)\r\n\tat org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)\r\n\tat org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)\r\n\tat org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)\r\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\r\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)\r\n\tat org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:276)\r\n\tat org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)\r\n\tat nl.prowareness.automation.selenium.webdriver.SeleniumWebDriver.click(SeleniumWebDriver.java:560)\r\n\tat nl.prowareness.automation.selenium.fields.Button.click(Button.java:18)\r\n\tat com.automation.cockpit.webdriver.pageclass.AgileCockpitLoginPage.Login(AgileCockpitLoginPage.java:59)\r\n\tat com.automation.cockpit.cucumber.glue.SurveyStepDefinition.navigateToHomePage(SurveyStepDefinition.java:31)\r\n\tat ✽.Given a user logs into the agile cockpit(Group1/Survey.feature:7)\r\n",
-              "status": "failed"
+              "duration": 72538122,
+              "status": "passed"
             },
             "line": 7,
             "name": "a user logs into the agile cockpit",
@@ -31,7 +30,8 @@
           },
           {
             "result": {
-              "status": "skipped"
+              "duration": 7557794708,
+              "status": "passed"
             },
             "line": 8,
             "name": "creates a survey",
@@ -42,43 +42,10 @@
           },
           {
             "result": {
-              "status": "skipped"
+              "duration": 33871,
+              "status": "passed"
             },
             "line": 9,
-            "name": "newly created survey should be present in the system",
-            "match": {
-              "location": "SurveyStepDefinition.validateHeadersInHomePage()"
-            },
-            "keyword": "Then "
-          }
-        ]
-      },
-      {
-        "line": 11,
-        "name": "As a user I want to validate survey with multiple users",
-        "description": "",
-        "id": "survey;as-a-user-i-want-to-validate-survey-with-multiple-users",
-        "type": "scenario",
-        "keyword": "Scenario",
-        "steps": [
-          {
-            "result": {
-              "duration": 16428078049,
-              "status": "passed"
-            },
-            "line": 12,
-            "name": "creates a survey",
-            "match": {
-              "location": "SurveyStepDefinition.createSurvey()"
-            },
-            "keyword": "Given "
-          },
-          {
-            "result": {
-              "duration": 66084,
-              "status": "passed"
-            },
-            "line": 13,
             "name": "newly created survey should be present in the system",
             "match": {
               "location": "SurveyStepDefinition.validateHeadersInHomePage()"

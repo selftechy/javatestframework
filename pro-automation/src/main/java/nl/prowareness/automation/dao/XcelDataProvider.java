@@ -109,6 +109,7 @@ public class XcelDataProvider {
 	        
 	        xlData.setSheetData(sheetData);
 	        xlData.setSheetDataByName(sheetDataByName);
+	        workbook.close();
 			
 		} catch (EncryptedDocumentException | InvalidFormatException | IOException e) {
 			LOGGER.error("Could not read excel data file: "+e);

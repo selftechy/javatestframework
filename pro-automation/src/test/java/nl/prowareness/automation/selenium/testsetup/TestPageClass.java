@@ -25,10 +25,8 @@ public class TestPageClass extends BasePage{
     public void test() throws AutomationElementNotFoundException, AutomationDriverException{
         log.info("Testing");
         driver.typeText(test.getFindBy(), test.getFindByValue(), "Text");
-        waitJQueryAngular(20);
-        waitUntilElementIsVisible(test, 10);
-       test.click();
-       
-       
+        driver.waitUntilJQueryAndAngularLoad(15);
+        driver.waitUntilElementIsVisible(test, 10);
+        test.click();
     }
 }
