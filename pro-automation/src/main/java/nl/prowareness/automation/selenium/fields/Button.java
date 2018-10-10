@@ -2,7 +2,7 @@ package nl.prowareness.automation.selenium.fields;
 
 import nl.prowareness.automation.selenium.exceptions.AutomationElementNotFoundException;
 import nl.prowareness.automation.selenium.utilities.FindBy;
-import nl.prowareness.automation.selenium.webdriver.SeleniumWebDriver;
+import nl.prowareness.automation.selenium.webdriver.DriverContext;
 
 /**
  * contains  methods related to Button Actions
@@ -10,12 +10,12 @@ import nl.prowareness.automation.selenium.webdriver.SeleniumWebDriver;
  */
 public class Button extends BaseElement{
 
-    public Button(SeleniumWebDriver webDriver, FindBy findBy, String findByValue) {
-        super(webDriver, findBy, findByValue);
+    public Button(DriverContext drvContext, FindBy findBy, String findByValue) {
+        super(drvContext, findBy, findByValue);
     }
 
     public void click() throws AutomationElementNotFoundException{
-        webDriver.click(findBy, findByValue.get());
+        drvContext.click(findBy, findByValue.get());
     }
 
     @Override

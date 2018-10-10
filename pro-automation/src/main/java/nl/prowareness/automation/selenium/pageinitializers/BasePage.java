@@ -3,7 +3,7 @@ package nl.prowareness.automation.selenium.pageinitializers;
 import org.apache.log4j.Logger;
 
 import nl.prowareness.automation.selenium.exceptions.AutomationDriverException;
-import nl.prowareness.automation.selenium.webdriver.SeleniumWebDriver;
+import nl.prowareness.automation.selenium.webdriver.DriverContext;
 
 /**
  *
@@ -11,22 +11,22 @@ import nl.prowareness.automation.selenium.webdriver.SeleniumWebDriver;
  *
  */
 public class BasePage {
-    protected SeleniumWebDriver driver;
+    protected DriverContext driverContext;
 	private static final Logger LOGGER = Logger.getLogger(BasePage.class);
 
-    public BasePage(SeleniumWebDriver driver) throws AutomationDriverException  {
-        PageInitializer.initialize(this, driver);
-        this.driver=driver;
+    public BasePage(DriverContext driverContext) throws AutomationDriverException  {
+        PageInitializer.initialize(this, driverContext);
+        this.driverContext=driverContext;
     }
 
 
 
-    public SeleniumWebDriver getDriver() {
-        return driver;
+    public DriverContext getDriver() {
+        return driverContext;
     }
 
-    public void setDriver(SeleniumWebDriver driver) {
-        this.driver = driver;
+    public void setDriver(DriverContext drvContext) {
+        this.driverContext = drvContext;
     }
     
    

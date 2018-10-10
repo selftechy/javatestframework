@@ -2,7 +2,8 @@ package nl.prowareness.automation.selenium.assertions;
 
 import org.junit.Assert;
 
-import nl.prowareness.automation.selenium.webdriver.SeleniumWebDriver;
+import nl.prowareness.automation.selenium.webdriver.DriverContext;
+
 
 public class AssertWithScreenShot {
 
@@ -10,7 +11,7 @@ public class AssertWithScreenShot {
 	}
 
 	static public void assertTrue(String message, boolean condition,
-			SeleniumWebDriver driver) {
+			DriverContext driver) {
 		try {
 			Assert.assertTrue(message, condition);
 		} catch (AssertionError e) {
@@ -19,7 +20,7 @@ public class AssertWithScreenShot {
 		}
 	}
 
-	static public void assertTrue(boolean condition, SeleniumWebDriver driver) {
+	static public void assertTrue(boolean condition, DriverContext driver) {
 		try {
 			Assert.assertTrue(condition);
 		} catch (AssertionError e) {
@@ -29,7 +30,7 @@ public class AssertWithScreenShot {
 	}
 
 	static public void assertFalse(String message, boolean condition,
-			SeleniumWebDriver driver) {
+			DriverContext driver) {
 		try {
 			Assert.assertFalse(message, condition);
 		} catch (AssertionError e) {
@@ -38,7 +39,7 @@ public class AssertWithScreenShot {
 		}
 	}
 
-	static public void assertFalse(boolean condition, SeleniumWebDriver driver) {
+	static public void assertFalse(boolean condition, DriverContext driver) {
 		try {
 			Assert.assertFalse(condition);
 		} catch (AssertionError e) {
@@ -47,7 +48,7 @@ public class AssertWithScreenShot {
 		}
 	}
 
-	static public void fail(String message, SeleniumWebDriver driver) {
+	static public void fail(String message, DriverContext driver) {
 		try {
 			Assert.fail(message);
 		} catch (AssertionError e) {
@@ -56,7 +57,7 @@ public class AssertWithScreenShot {
 		}
 	}
 
-	static public void fail(SeleniumWebDriver driver) {
+	static public void fail(DriverContext driver) {
 		try {
 			Assert.fail();
 		} catch (AssertionError e) {
@@ -66,7 +67,7 @@ public class AssertWithScreenShot {
 	}
 
 	static public void assertEquals(String message, Object expected,
-			Object actual, SeleniumWebDriver driver) {
+			Object actual, DriverContext driver) {
 		try {
 			Assert.assertEquals(message, expected, actual);
 		} catch (AssertionError e) {
@@ -76,7 +77,7 @@ public class AssertWithScreenShot {
 	}
 
 	static public void assertEquals(Object expected, Object actual,
-			SeleniumWebDriver driver) {
+			DriverContext driver) {
 		try {
 			Assert.assertEquals(expected, actual);
 		} catch (AssertionError e) {
@@ -86,7 +87,7 @@ public class AssertWithScreenShot {
 	}
 
 	static public void assertNotEquals(String message, Object first,
-			Object second, SeleniumWebDriver driver) {
+			Object second, DriverContext driver) {
 		try {
 			Assert.assertNotEquals(message, first, second);
 		} catch (AssertionError e) {
@@ -96,7 +97,7 @@ public class AssertWithScreenShot {
 	}
 
 	static public void assertNotEquals(Object first, Object second,
-			SeleniumWebDriver driver) {
+			DriverContext driver) {
 		try {
 			Assert.assertNotEquals(first, second);
 		} catch (AssertionError e) {

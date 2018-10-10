@@ -2,16 +2,16 @@ package nl.prowareness.automation.selenium.fields;
 
 import nl.prowareness.automation.selenium.exceptions.AutomationElementNotFoundException;
 import nl.prowareness.automation.selenium.utilities.FindBy;
-import nl.prowareness.automation.selenium.webdriver.SeleniumWebDriver;
+import nl.prowareness.automation.selenium.webdriver.DriverContext;
 
 public class Image extends BaseElement{
 
-    public Image(final SeleniumWebDriver webDriver, final FindBy findBy, final String findByValue){
-        super(webDriver, findBy, findByValue);
+    public Image(final DriverContext drvContext, final FindBy findBy, final String findByValue){
+        super(drvContext, findBy, findByValue);
     }
 
     public void click() throws AutomationElementNotFoundException{
-        webDriver.click(findBy, findByValue.get());
+        drvContext.click(findBy, findByValue.get());
     }
 
     public String getSrc() throws AutomationElementNotFoundException{

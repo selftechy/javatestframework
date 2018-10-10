@@ -2,12 +2,12 @@ package nl.prowareness.automation.selenium.fields;
 
 
 import nl.prowareness.automation.selenium.utilities.FindBy;
-import nl.prowareness.automation.selenium.webdriver.SeleniumWebDriver;
+import nl.prowareness.automation.selenium.webdriver.DriverContext;
 
 public class HtmlElement extends BaseElement{
 
-    public HtmlElement(SeleniumWebDriver webDriver, FindBy findBy, String findByValue) {
-        super(webDriver, findBy, findByValue);
+    public HtmlElement(DriverContext drvContext, FindBy findBy, String findByValue) {
+        super(drvContext, findBy, findByValue);
     }
 
 

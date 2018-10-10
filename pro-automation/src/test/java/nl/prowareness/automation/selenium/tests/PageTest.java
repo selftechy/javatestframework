@@ -16,13 +16,13 @@ import nl.prowareness.automation.selenium.exceptions.AutomationDriverException;
 import nl.prowareness.automation.selenium.exceptions.AutomationElementNotFoundException;
 import nl.prowareness.automation.selenium.testsetup.TestConfig;
 import nl.prowareness.automation.selenium.testsetup.TestPageClass;
-import nl.prowareness.automation.selenium.webdriver.SeleniumWebDriver;
+import nl.prowareness.automation.selenium.webdriver.DriverContext;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes={TestConfig.class})
 public class PageTest {
 	@Autowired
-	SeleniumWebDriver driver;
+	DriverContext driverContext;
 	@Autowired
 	TestPageClass tp;
 
@@ -30,14 +30,14 @@ public class PageTest {
 	@Before
 	public void initialize(){
 		//System.setProperty("webdriver.gecko.driver", "C:\\TestAutomation\\SeleniumWrapper\\src\\main\\resources\\drivers\\geckodriver.exe");
-		if(driver.getNativeWebDriver()==null){
-			driver.setUpBrowser();
+		if(driverContext.getWebDriver()==null){
+			driverContext.setUpBrowser();
 		}
 	}
 	
 	@Test
 	public void test() throws AutomationElementNotFoundException, AutomationDriverException, IOException, AutomationDataException{
-		driver.connect("http://google.com");
+		driverContext.connect("http://google.com");
 		tp.test();
 		
 
@@ -46,7 +46,7 @@ public class PageTest {
 	
 	@After
 	public void ss(){
-		for(WebDriver driver : driver.getActiveDrivers()){
+		for(WebDriver driver : driverContext.getActiveDrivers()){
 			driver.quit();
 		}
 	}

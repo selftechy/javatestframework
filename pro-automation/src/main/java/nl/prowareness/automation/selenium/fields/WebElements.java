@@ -8,13 +8,13 @@ import org.openqa.selenium.By;
 
 import nl.prowareness.automation.selenium.exceptions.AutomationDriverException;
 import nl.prowareness.automation.selenium.utilities.FindBy;
-import nl.prowareness.automation.selenium.webdriver.SeleniumWebDriver;
+import nl.prowareness.automation.selenium.webdriver.DriverContext;
 
 public class WebElements<T extends BaseElement> extends BaseElement {
     private Class<T> elementType;
 
-    public WebElements(SeleniumWebDriver webDriver, FindBy findBy, String findByValue, Class<T> elementType) {
-        super(webDriver, findBy, findByValue);
+    public WebElements(DriverContext drvContext, FindBy findBy, String findByValue, Class<T> elementType) {
+        super(drvContext, findBy, findByValue);
         this.elementType=elementType;
     }
 
@@ -25,12 +25,12 @@ public class WebElements<T extends BaseElement> extends BaseElement {
     }
 
     public List<T> getWebElements() throws AutomationDriverException {
-        int size = webDriver.getNativeWebDriver().findElements(By.xpath(findByValue.get())).size();
+        int size = drvContext.getWebDriver().findElements(By.xpath(findByValue.get())).size();
         List<T> elements = new ArrayList<T>(); 
         for(int i=1;i<=size;i++){
             try {
                 
-            	elements.add(i-1, elementType.getConstructor(SeleniumWebDriver.class, FindBy.class, String.class).newInstance(webDriver, findBy, "("+findByValue.get()+")["+i+"]"));
+            	elements.add(i-1, elementType.getConstructor(DriverContext.class, FindBy.class, String.class).newInstance(drvContext, findBy, "("+findByValue.get()+")["+i+"]"));
             } catch (InstantiationException | IllegalAccessException 
                     | InvocationTargetException | NoSuchMethodException  e) {
                 throw new AutomationDriverException("Error creating Webelement", e);

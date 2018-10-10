@@ -2,7 +2,7 @@ package nl.prowareness.automation.selenium.fields;
 
 import nl.prowareness.automation.selenium.exceptions.AutomationElementNotFoundException;
 import nl.prowareness.automation.selenium.utilities.FindBy;
-import nl.prowareness.automation.selenium.webdriver.SeleniumWebDriver;
+import nl.prowareness.automation.selenium.webdriver.DriverContext;
 
 /**
  * contains  methods related to Selecting/Deselecting Multiple Items Actions
@@ -10,12 +10,12 @@ import nl.prowareness.automation.selenium.webdriver.SeleniumWebDriver;
  */
 public class MultiSelectListBox extends ListBox{
 
-    public MultiSelectListBox(final SeleniumWebDriver webDriver, final FindBy findBy, final String findByValue){
-        super(webDriver, findBy, findByValue);
+    public MultiSelectListBox(final DriverContext drvContext, final FindBy findBy, final String findByValue){
+        super(drvContext, findBy, findByValue);
     }
 
     public void click() throws AutomationElementNotFoundException{
-        webDriver.click(findBy, findByValue.get());
+        drvContext.click(findBy, findByValue.get());
     } 
 
 
@@ -26,11 +26,11 @@ public class MultiSelectListBox extends ListBox{
     }
 
     public void deselectItem(final String item) throws AutomationElementNotFoundException {
-        webDriver.deselectComboBoxItem(findBy, findByValue.get(), item);
+        drvContext.deselectComboBoxItem(findBy, findByValue.get(), item);
     }
 
     public void deselectAllItems() throws AutomationElementNotFoundException {
-        webDriver.deselectAllComboBoxItems(findBy, findByValue.get());
+        drvContext.deselectAllComboBoxItems(findBy, findByValue.get());
     }
 
     @Override

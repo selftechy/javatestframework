@@ -10,7 +10,7 @@ import nl.prowareness.automation.selenium.fields.BaseElement;
 import nl.prowareness.automation.selenium.utilities.FindBy;
 import nl.prowareness.automation.selenium.utilities.FindElement;
 import nl.prowareness.automation.selenium.utilities.FindElements;
-import nl.prowareness.automation.selenium.webdriver.SeleniumWebDriver;
+import nl.prowareness.automation.selenium.webdriver.DriverContext;
 
 /**
  * 
@@ -23,7 +23,7 @@ public class PageInitializer {
 		private PageInitializer(){
 		}
 
-	   public static <T extends BasePage> T intializePage(Class<T> pageClass, SeleniumWebDriver driver) throws AutomationDriverException{
+	   public static <T extends BasePage> T intializePage(Class<T> pageClass, DriverContext driver) throws AutomationDriverException{
 	        T objectInst= null;
 	        try {
 	            objectInst = pageClass.getConstructor().newInstance();
@@ -37,7 +37,7 @@ public class PageInitializer {
 	    }
 
 	    @SuppressWarnings("rawtypes")
-		static void initialize(BasePage p, SeleniumWebDriver driver) throws AutomationDriverException {
+		static void initialize(BasePage p, DriverContext driver) throws AutomationDriverException {
 	        try{
 	            Field[] fields = p.getClass().getDeclaredFields();
 	            String className = p.getClass().getSimpleName();
@@ -46,7 +46,7 @@ public class PageInitializer {
 	                	f.setAccessible(true);
 	            		FindElement ann = f.getAnnotation(FindElement.class);
 	                	nl.prowareness.automation.selenium.objectparser.ObjectRepository.Field field = getRepoField(driver, className, f, ann.page(), ann.field());
-	                    f.set(p, f.getType().getConstructor(SeleniumWebDriver.class, FindBy.class, String.class).newInstance(driver, field.getFindBy(), field.getFindByValue()));
+	                    f.set(p, f.getType().getConstructor(DriverContext.class, FindBy.class, String.class).newInstance(driver, field.getFindBy(), field.getFindByValue()));
 	                    f.setAccessible(false);
 	                } else if(f.isAnnotationPresent(FindElements.class)){
 	                	f.setAccessible(true);
@@ -54,7 +54,7 @@ public class PageInitializer {
 	                    nl.prowareness.automation.selenium.objectparser.ObjectRepository.Field field = getRepoField(driver, className, f, ann.page(), ann.field());
 	                    verifyFindBy(field.getFindBy());
 	                    Class klass = (Class) ((ParameterizedType)f.getGenericType()).getActualTypeArguments()[0];
-	                    f.set(p, f.getType().getConstructor(SeleniumWebDriver.class, FindBy.class, String.class, Class.class ).newInstance(driver, field.getFindBy(), field.getFindByValue(), klass));
+	                    f.set(p, f.getType().getConstructor(DriverContext.class, FindBy.class, String.class, Class.class ).newInstance(driver, field.getFindBy(), field.getFindByValue(), klass));
 	                    f.setAccessible(false);
 	                }
 	            }
@@ -63,7 +63,7 @@ public class PageInitializer {
 	        }
 	    }
 
-		private static nl.prowareness.automation.selenium.objectparser.ObjectRepository.Field getRepoField(SeleniumWebDriver driver, String className, Field f, String pageName, String fieldName)throws AutomationDriverException {
+		private static nl.prowareness.automation.selenium.objectparser.ObjectRepository.Field getRepoField(DriverContext driver, String className, Field f, String pageName, String fieldName)throws AutomationDriverException {
 			String field = "".equals(fieldName)?  f.getName():fieldName;
 			String page = "".equals(pageName)?  className :pageName;
 			return driver.getObjRepoManager().getField(page, field);
@@ -75,7 +75,7 @@ public class PageInitializer {
 	        }
 	    }
 
-	    public static void reInitialize(BasePage p, SeleniumWebDriver driver) throws AutomationDriverException {
+	    public static void reInitialize(BasePage p, DriverContext driver) throws AutomationDriverException {
 	        Field[] fields = p.getClass().getDeclaredFields();
 	        p.setDriver(driver);
 	        for(Field f : fields){

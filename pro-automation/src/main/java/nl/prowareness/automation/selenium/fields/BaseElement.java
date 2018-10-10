@@ -2,7 +2,7 @@ package nl.prowareness.automation.selenium.fields;
 
 import nl.prowareness.automation.selenium.exceptions.AutomationElementNotFoundException;
 import nl.prowareness.automation.selenium.utilities.FindBy;
-import nl.prowareness.automation.selenium.webdriver.SeleniumWebDriver;
+import nl.prowareness.automation.selenium.webdriver.DriverContext;
 
 
 
@@ -11,24 +11,24 @@ import nl.prowareness.automation.selenium.webdriver.SeleniumWebDriver;
  *
  */
 public abstract class BaseElement {
-    protected SeleniumWebDriver webDriver;
+    protected DriverContext drvContext;
     protected FindBy findBy;
     protected ThreadLocal<String> findByValue = new ThreadLocal<String>();
     protected String findByValueStatic;
 
-    protected BaseElement(final SeleniumWebDriver webDriver, final FindBy findBy, final String findByValue) {
-        this.webDriver = webDriver;
+    protected BaseElement(final DriverContext webDriver, final FindBy findBy, final String findByValue) {
+        this.drvContext = webDriver;
         this.findBy = findBy;
         this.findByValue.set(findByValue);
         findByValueStatic = findByValue;
     }
 
-    public SeleniumWebDriver getWebDriver() {
-        return webDriver;
+    public DriverContext getWebDriver() {
+        return drvContext;
     }
 
-    public void setWebDriver(SeleniumWebDriver webDriver) {
-        this.webDriver = webDriver;
+    public void setWebDriver(DriverContext webDriver) {
+        this.drvContext = webDriver;
     }
 
 
@@ -47,7 +47,7 @@ public abstract class BaseElement {
     }
 
     public String getAttribute(final String attributeName) throws AutomationElementNotFoundException {
-        return webDriver.getAttribute(findBy, findByValue.get(), attributeName);
+        return drvContext.getAttribute(findBy, findByValue.get(), attributeName);
     }
 
     public abstract BaseElement replaceSubStringOfFindByValue(String subStrToMatch, String subStrToReplaceWith);
@@ -58,39 +58,39 @@ public abstract class BaseElement {
 
 
     public boolean isPresent(){
-        return webDriver.isElementPresent(findBy, findByValue.get());
+        return drvContext.isElementPresent(findBy, findByValue.get());
     }
 
     public boolean isVisible(){
-        return webDriver.isElementVisible(findBy, findByValue.get());
+        return drvContext.isElementVisible(findBy, findByValue.get());
     }
 
     public boolean isEnabled(){
-        return webDriver.isElementEnabled(findBy, findByValue.get());
+        return drvContext.isElementEnabled(findBy, findByValue.get());
     }
 
     public void mouseHover() throws AutomationElementNotFoundException {
-        webDriver.mouseHover(findBy, findByValue.get());
+        drvContext.mouseHover(findBy, findByValue.get());
     }
 
     public String getText() throws AutomationElementNotFoundException{
-        return webDriver.getElementText(findBy, findByValue.get());
+        return drvContext.getElementText(findBy, findByValue.get());
     }
     
     public String getCSSValue(String propertyName) throws AutomationElementNotFoundException{
-    	return webDriver.getCSSValue(findBy, findByValue.get(), propertyName);
+    	return drvContext.getCSSValue(findBy, findByValue.get(), propertyName);
     }
 
     public void clickByJavaScript() throws AutomationElementNotFoundException{
-        webDriver.clickByJavaScript(findBy, findByValue.get());
+        drvContext.clickByJavaScript(findBy, findByValue.get());
     }
 
     public void clearCache(){
-    	webDriver.clearBrowserCache();
+    	drvContext.clearBrowserCache();
     }
 
     public void javaScriptScrollUntilVisible() throws AutomationElementNotFoundException{
-    	webDriver.javaScriptScrollToElement(findBy, findByValue.get());
+    	drvContext.javaScriptScrollToElement(findBy, findByValue.get());
     }
 
 }
