@@ -16,19 +16,19 @@ public abstract class BaseElement {
     protected ThreadLocal<String> findByValue = new ThreadLocal<String>();
     protected String findByValueStatic;
 
-    protected BaseElement(final DriverContext webDriver, final FindBy findBy, final String findByValue) {
-        this.drvContext = webDriver;
+    protected BaseElement(final DriverContext driverContext, final FindBy findBy, final String findByValue) {
+        this.drvContext = driverContext;
         this.findBy = findBy;
         this.findByValue.set(findByValue);
         findByValueStatic = findByValue;
     }
 
-    public DriverContext getWebDriver() {
+    public DriverContext getDriverContext() {
         return drvContext;
     }
 
-    public void setWebDriver(DriverContext webDriver) {
-        this.drvContext = webDriver;
+    public void setWebDriver(DriverContext driverContext) {
+        this.drvContext = driverContext;
     }
 
 
